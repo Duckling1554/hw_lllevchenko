@@ -3,6 +3,7 @@ from sklearn.svm import SVC
 import pandas as pd
 from util.util import save_model
 from conf.conf import settings
+from model.model_funcs import grid_search
 
 
 def train_svm(X_train:pd.DataFrame, y_train:pd.DataFrame) -> SVC:
@@ -17,6 +18,13 @@ def train_svm(X_train:pd.DataFrame, y_train:pd.DataFrame) -> SVC:
     clf = SVC(random_state=3, probability=True)
 
     logging.info("Training the model")
+    # # Train the model
+    # clf.fit(X_train, y_train)
+
+    # Using Grid Search to find best params
+    params = grid_search('SVM', X_train, y_train)
+    clf.set_params(**params)
+
     # Train the model
     clf.fit(X_train, y_train)
 

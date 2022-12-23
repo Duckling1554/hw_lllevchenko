@@ -1,4 +1,5 @@
-from model.model_funcs import predict, initialize_model
+from model.model_funcs import predict
+from model.initialize_model import initialize_model
 from conf.conf import logging
 from conf.conf import settings
 import argparse

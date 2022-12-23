@@ -3,7 +3,7 @@ from sklearn.linear_model import LogisticRegression
 import pandas as pd
 from util.util import save_model
 from conf.conf import settings
-
+from model.model_funcs import grid_search
 
 def train_logistic_regression(X_train:pd.DataFrame, y_train:pd.DataFrame) -> LogisticRegression:
     """
@@ -16,9 +16,12 @@ def train_logistic_regression(X_train:pd.DataFrame, y_train:pd.DataFrame) -> Log
     # Initialize the model
     clf = LogisticRegression()
 
-    logging.info("Training the model")
     # Train the model
     clf.fit(X_train, y_train)
+
+    # Using Grid Search to find best params
+    params = grid_search('LOG_REG', X_train, y_train)
+    clf.set_params(**params)
 
     save_model(dir=settings.MODEL.LOG_REG, model=clf)
 
