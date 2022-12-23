@@ -6,6 +6,8 @@ The base of the model was taken from: https://github.com/5x12/ml-cookbook/tree/m
 
 The models were trained using the dataset: https://raw.githubusercontent.com/5x12/ml-cookbook/master/supplements/data/heart.csv.
 
+To add new model, add its training function 
+
 ## Predicting
 
 To get prediction, run `python3 entrypoint.py --prediction_model <name of the model> --prediction_values <values separated by comma (no spaces)>`. 
