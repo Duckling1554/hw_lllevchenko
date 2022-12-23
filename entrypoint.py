@@ -25,7 +25,9 @@ my_namespace = parser.parse_args()
 
 
 # Checking if model config exists. If not, initializes the model.
-if not (my_namespace.prediction_model in settings.MODEL and exists(settings.MODEL[my_namespace.prediction_model])): #
+if (my_namespace.prediction_model not in settings.MODEL):
+    raise Exception(f'The model path is not specified in settings.toml.')
+if not (exists(settings.MODEL[my_namespace.prediction_model])):
     initialize_model(model_name=my_namespace.prediction_model)
 
 # Splitting input prediction values. Checking that the number of values is convenient.

@@ -44,16 +44,15 @@ def predict(values: list, path_to_model: str) -> list:
     return clf.predict(values)
 
 
-def grid_search(model_name: str, X_train: pd.DataFrame, y_train: pd.DataFrame) -> dict:
+def grid_search(model, model_name: str, X_train: pd.DataFrame, y_train: pd.DataFrame) -> dict:
     """
     Hypertuning using GridSearch.
+    :param model_name: model
     :param model_name: name of the model (from [MODEL] in conf/settings.toml)
     :param X_train: train df of parameters
     :param y_train: train df of target
     :return: dict of best params
     """
-
-    model = load_model(settings.MODEL[model_name])
 
     logging.info('Starting GridSearch')
     params = settings.MODEL[model_name+'_GRID']

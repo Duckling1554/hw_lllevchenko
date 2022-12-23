@@ -20,7 +20,7 @@ def train_logistic_regression(X_train:pd.DataFrame, y_train:pd.DataFrame) -> Log
     clf.fit(X_train, y_train)
 
     # Using Grid Search to find best params
-    params = grid_search('LOG_REG', X_train, y_train)
+    params = grid_search(clf, 'LOG_REG', X_train, y_train)
     clf.set_params(**params)
 
     save_model(dir=settings.MODEL.LOG_REG, model=clf)

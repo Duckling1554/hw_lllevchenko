@@ -22,7 +22,7 @@ def train_svm(X_train:pd.DataFrame, y_train:pd.DataFrame) -> SVC:
     # clf.fit(X_train, y_train)
 
     # Using Grid Search to find best params
-    params = grid_search('SVM', X_train, y_train)
+    params = grid_search(clf, 'SVM', X_train, y_train)
     clf.set_params(**params)
 
     # Train the model
