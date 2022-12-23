@@ -1,6 +1,5 @@
 from connector.pg_connector import get_data
 from conf.conf import settings
-from model.split import split
 from model.logistic_regression import train_logistic_regression
 from model.svm import train_svm
 from util.util import load_model

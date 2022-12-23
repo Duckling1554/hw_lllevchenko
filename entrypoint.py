@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description='Parser to choose model and input v
 parser.add_argument(
     '--prediction_model',
     type=str,
-    choices=['SVM', 'LOG_REG', 'KEK'],
+    choices=['SVM', 'LOG_REG'],
     default='LOG_REG',
     help='Choose a model for your predictions'
 )
@@ -16,7 +16,7 @@ parser.add_argument(
     '--prediction_values',
     type=str,
     default=settings.PREDICTION.VALUES,
-    help='Input 13 values separated with commas (!no spaces!)'
+    help=f'Input {settings.PREDICTION.NUMBER_VALUES} values separated with commas (!no spaces!)'
 )
 my_namespace = parser.parse_args()
 
